@@ -5,8 +5,8 @@ export const GifWizApp = () => {
 
     const [ categories, setCategories ] = useState(['One Punch', 'Dragon Ball'])
 
-    const onAddCategory = () => {
-        setCategories([ 'Samurai X', ...categories])
+    const onAddCategory = (newCategory) => {
+        setCategories([ newCategory, ...categories]);
     }
   return (
     <>
@@ -15,10 +15,13 @@ export const GifWizApp = () => {
 
 
         {/* imput */}
-        <AddCategory/>
+        <AddCategory
+        //  setCategories={setCategories} 
+            onNewCategory={event => onAddCategory(event)}
+         />
 
         {/* listado de Gifs */}
-        <button onClick={onAddCategory}>Agregar</button>
+        {/* <button onClick={onAddCategory}>Agregar</button> */}
         <ol>
             {
             categories.map( category => {
